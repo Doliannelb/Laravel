@@ -4,9 +4,9 @@ FROM php:8.2-fpm
 # Définir le répertoire de travail dans le conteneur
 WORKDIR /var/www/html
 
-# Installer les dépendances nécessaires (libpng, pdo_mysql, zip, etc.)
+# Installer les dépendances nécessaires
 RUN apt-get update && apt-get install -y \
-    libpng-dev libjpeg-dev libfreetype6-dev zip unzip git curl \
+    libpng-dev libjpeg-dev libfreetype6-dev libzip-dev zip unzip git curl \
     && apt-get clean && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd pdo pdo_mysql zip bcmath
